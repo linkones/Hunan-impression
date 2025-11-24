@@ -1,0 +1,67 @@
+body {
+  margin: 0;
+  font-family: "宋体", sans-serif;
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 255, 255, 0.7)
+  );
+  background-image: url("/image/首页.jpg");
+  background-size: cover;
+}
+
+header {
+  /* background-image: url("/image/background.jpg"); */
+  font-size: 1.25rem;
+  padding: 30px;
+  text-align: center;
+}
+
+nav a {
+  color: white;
+  width: 100%;
+  padding: 3rem 0;
+  /* display: flex; */
+  /* justify-content: space-between; */
+  flex-direction: row;
+  /* align-items: center; */
+  margin: 0 15px;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.hero {
+  background: url("../images/hunan-bg.jpg") center/cover no-repeat;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-text {
+  background: rgba(255, 255, 255, 0.7);
+  padding: 20px 40px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 40px;
+}
+
+.card {
+  background: rgb(8, 8, 8);
+  background: rgba(255, 255, 255, 0.8);
+  padding: 25px;
+  width: 250px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #333;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}

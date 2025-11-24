@@ -1,0 +1,50 @@
+body {
+  margin: 0;
+  font-family: "宋体", sans-serif;
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 255, 255, 0.7)
+  );
+  background-image: url("/image/湘味人间1.png");
+  background-size: cover;
+}
+
+header {
+  color: black;
+  font-size: 1.25rem;
+  text-align: center;
+  padding: 20px;
+}
+
+nav a {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+}
+
+.foods {
+  width: 80%;
+  margin: 30px auto;
+  display: flex;
+  gap: 25px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.foods:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.food {
+  background: black;
+  background-color: rgba(255, 255, 255, 0.7);
+  width: 260px;
+  padding: 15px;
+  border-radius: 6px;
+}
+
+.food img {
+  width: 100%;
+  border-radius: 6px;
+}
