@@ -5,7 +5,7 @@ body {
     rgba(255, 255, 255, 0.9),
     rgba(255, 255, 255, 0.7)
   );
-  background-image: url("/image/潇湘盛景1.jpg");
+  background-image: url("../image/潇湘盛景1.jpg");
   background-size: cover;
 }
 
