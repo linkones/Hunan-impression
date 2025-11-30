@@ -16,6 +16,10 @@ header {
   padding: 20px;
 }
 
+nav a:hover {
+  color: black;
+}
+
 nav a {
   color: white;
   margin: 0 15px;
@@ -31,7 +35,7 @@ nav a {
   justify-content: center;
 }
 
-.foods:hover {
+.food:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
