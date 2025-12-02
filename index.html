@@ -16,18 +16,136 @@
         <a href="food.html">湘味人间</a>
       </nav>
     </header>
+    <div class="main-content">
+      <section class="weather-widget">
+        <h2>湖南天气查询</h2>
+        <input type="text" id="cityInput" placeholder="输入城市名，如：长沙" />
+        <button onclick="getWeather()">查询</button>
+        <div id="weatherResult"></div>
+      </section>
 
-    <section class="hero">
-      <div class="hero-text">
-        <h2>千年湖湘 · 山水人文</h2>
-        <p>你要写湖南，就不能只写湖南——</p>
-        <p>你要写春回大地的南岳衡山连绵起伏、高耸入云，梦幻惹人怜</p>
-        <p>要写夏日酷暑的洞庭湖畔微波浩渺、绿水长青，凉风拂心岗</p>
-        <p>要写秋高气爽的橘子洲头万山红遍、层林尽染，人在画中游</p>
-        <p>要写冬日初雪的岳麓山巅,凝霜挂雪、戴玉披银，看银装素裹......</p>
-      </div>
-    </section>
+      <script>
+        function getWeather() {
+          const city = document.getElementById("cityInput").value;
+          const resultDiv = document.getElementById("weatherResult");
 
+          if (!city) {
+            resultDiv.innerHTML = `
+            <div class="weather-error">
+                <p>⚠️ 请输入城市名</p>
+            </div>
+        `;
+            return;
+          }
+
+          // 显示加载状态
+          resultDiv.innerHTML = `
+        <div class="weather-loading">
+            <div class="loading-spinner"></div>
+            <p>正在查询 ${city} 的天气...</p>
+        </div>
+    `;
+
+          // 调用API
+          fetch(
+            `http://localhost:3000/api/weather?city=${encodeURIComponent(city)}`
+          )
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.success) {
+                resultDiv.innerHTML = `
+                    <div class="weather-card">
+                        <div class="weather-header">
+                            <h3>${data.city} ${data.weatherIcon || "🌤️"}</h3>
+                            <div class="weather-temp">${data.temperature}</div>
+                            <div class="weather-status">${data.weather}</div>
+                        </div>
+                        <div class="weather-details">
+                            <div class="detail-row">
+                                <span class="detail-label">体感温度</span>
+                                <span class="detail-value">${
+                                  data.feelsLike || "--"
+                                }</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">湿度</span>
+                                <span class="detail-value">${
+                                  data.humidity
+                                }</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">风力</span>
+                                <span class="detail-value">${data.wind}</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">风速</span>
+                                <span class="detail-value">${
+                                  data.windSpeed || "--"
+                                }</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">气压</span>
+                                <span class="detail-value">${
+                                  data.pressure || "--"
+                                }</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">能见度</span>
+                                <span class="detail-value">${
+                                  data.visibility || "--"
+                                }</span>
+                            </div>
+                        </div>
+                        <div class="weather-footer">
+                            <p>🕐 更新时间：${data.updateTime}</p>
+                            <p>🔌 数据源：${data.source}</p>
+                            ${
+                              data.note
+                                ? `<p class="note">📝 ${data.note}</p>`
+                                : ""
+                            }
+                        </div>
+                    </div>
+                `;
+              } else {
+                resultDiv.innerHTML = `
+                    <div class="weather-error">
+                        <p>❌ ${data.message || "查询失败"}</p>
+                        ${
+                          data.availableCities
+                            ? `<p>支持的城市：${data.availableCities.join(
+                                ", "
+                              )}</p>`
+                            : ""
+                        }
+                    </div>
+                `;
+              }
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+              resultDiv.innerHTML = `
+                <div class="weather-error">
+                    <p>❌ 网络请求失败</p>
+                    <p>请检查服务器是否正在运行</p>
+                    <p>错误信息：${error.message}</p>
+                </div>
+            `;
+            });
+        }
+      </script>
+
+      <section class="hero">
+        <div class="hero-text">
+          <h2>千年湖湘 · 山水人文</h2>
+          <p>你要写湖南，就不能只写湖南——</p>
+          <p>你要写春回大地的南岳衡山连绵起伏、高耸入云，梦幻惹人怜</p>
+          <p>要写夏日酷暑的洞庭湖畔微波浩渺、绿水长青，凉风拂心岗</p>
+          <p>要写秋高气爽的橘子洲头万山红遍、层林尽染，人在画中游</p>
+          <p>要写冬日初雪的岳麓山巅,凝霜挂雪、戴玉披银，看银装素裹......</p>
+        </div>
+      </section>
+    </div>
     <section class="cards">
       <a href="memory.html" class="card">
         <div class="slider">

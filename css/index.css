@@ -41,11 +41,30 @@ nav a:hover {
   justify-content: center;
 }
 
+.hero:hover {
+  transform: translateY(-5px);
+}
+
 .hero-text {
   background: rgba(255, 255, 255, 0.7);
   padding: 20px 40px;
   border-radius: 10px;
   text-align: center;
+}
+
+.main-content {
+  /* 启用弹性盒子布局 */
+  display: flex;
+  /* 允许子元素在容器宽度不足时换行 */
+  flex-wrap: wrap;
+  /* 设置子元素之间的间距为30像素 */
+  gap: 30px;
+  /* 设置容器的最大宽度为1200像素 */
+  max-width: 1200px;
+  /* 上下边距40像素，左右自动居中 */
+  margin: 40px auto;
+  /* 左右内边距20像素，避免内容贴边 */
+  padding: 0 20px;
 }
 
 .cards {
